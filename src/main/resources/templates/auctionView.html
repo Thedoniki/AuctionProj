@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	        crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+	        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+	        crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+	<script src="https://kit.fontawesome.com/d82fdbf1c7.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+	<link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+	<title>AuctionApp - Home</title>
+</head>
+<body style="background-color: plum;">
+<nav class="navbar sticky-top navbar-expand-md mb-3" style="background-color: #7f5cb8;">
+	<div class="container">
+		<div> <h3 style="color:white">Welcome!</h3>
+			<a class="navbar-brand" style="color:white" href="#" th:text="${user.getUsername()}"></a>
+		</div>
+		<div class="text-center justify-content-end">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="btn btn-light" th:href="@{/logout}" style="color:black">LOGOUT</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			
+			<div style="background-color:  #7f5cb8; margin-bottom:4em " class="media align-items-lg-center flex-column flex-lg-row p-3">
+				<img src="data:image/jpeg;base64,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" alt="Generic placeholder image" class="ml-lg-5 image-size order-1 order-lg-2">
+				
+				<div class="media-body mr-4 pl-3 b-yes">
+					<h5 class="mt-0 font-weight-bold mb-2" th:text="${auction.getAuctionTitle()}"></h5>
+					<div class="d-flex align-items-start justify-content-between mt-2">
+						<p th:text="${auction.getAuctionDesc()}"></p>
+						<div class="text-right">
+							<h6>Seller: <span th:text="${auction.getUser().getUsername()}"></span></h6>
+							<h6>Category: <span th:text="${auction.getAuctionCategory()}"></span></h6>
+						</div>
+					</div>
+					<div   class="d-flex align-items-end justify-content-between mt-2">
+						<div>
+							<h6>Post created:  <span class="font-weight-bold" th:text="${auction.getAuctionPosted()}"></span></h6>
+							<h6>End date: <span class="font-weight-bold" th:text="${auction.getAuctionEnd()}"></span></h6>
+							<h6>Start Price: <span class="font-weight-bold" th:text="${auction.getAuctionPrice()}"></span> SEK</h6>
+							<h6>Highest bidder: <span class="font-weight-bold" th:text="${auction.getAuctionHighest()}"></span> SEK</h6>
+						</div>
+						<div>
+							<form th:action="@{'/auction/bid/' + ${auction.getAuctionId()}}" method="get" th:object="${newBid}">
+								<div class="form-group">
+									<input type="number" class="form-control" placeholder="Place bid here..." autocomplete="off" required th:field="*{bid}">
+									<div th:if="${msg}" class="alert " th:classappend="${class}" role="alert" th:text="${msg}"></div>
+								</div>
+								<div class="float-right">
+									<a href="#" th:href="@{/1}" class="btn btn-light">Back to hompage</a>
+									<button type="submit" class="btn btn-light">Make a bid</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<table class="table" th:if="${allBids.size()>3}">
+			<h3 style="color: black;"  >Top 3 highest bids to this date</h3>
+			<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Username</th>
+				<th scope="col">Bid</th>
+				<th scope="col">Date</th>
+			</tr>
+			</thead>
+			<tbody th:each="bids : ${allBids.subList(0,3)}">
+			<tr>
+				<th scope="row" th:text="*{bids.getBidId()}"></th>
+				<td th:text="*{bids.getUser().getUsername()}"></td>
+				<td th:text="*{bids.getBid()}"></td>
+				<td th:text="*{bids.getBidDate()}"></td>
+			</tr>
+			</tbody>
+		</table>
+		<table class="table">
+			<h3  style="color: white;" >Bids made on this item</h3>
+			<tbody th:each="b : ${allBids}">
+			<tr>
+				<th scope="row" th:text="*{b.getBidId()}"></th>
+				<td th:text="*{b.getUser().getUsername()}"></td>
+				<td th:text="*{b.getBid()}"></td>
+				<td th:text="*{b.getBidDate()}"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	        crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+	        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+	        crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+	<script src="https://kit.fontawesome.com/d82fdbf1c7.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+	<title>AuctionApp - New Auction</title>
+</head>
+<body style="background-color: plum;">
+<nav class="navbar sticky-top navbar-expand-md mb-3" style="background-color: #7f5cb8;">
+	<div class="container">
+		<div> <h3 style="color:white">Welcome!</h3>
+			<a class="navbar-brand" style="color:white" href="#" th:text="${user.getUsername()}"></a>
+		</div>
+		<div class="text-center justify-content-end">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="btn btn-light" th:href="@{/logout}" style="color:black">LOGOUT</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container mb-4">
+	<div class="row">
+		<div class="col-12 col-sm-6 m-auto">
+			<h3 class="text-muted">Edit the auctionated item</h3>
+			<form th:action="@{'/auction/update/' + ${aID.getAuctionId()}}" th:object="${aID}" method="get">
+				<div class="form-group">
+					<input type="text" class="form-control" readonly required th:field="*{auctionId}">
+				</div>
+				<div class="form-group">
+					<input type="text" name="title" class="form-control" autocomplete="off" required th:field="*{auctionTitle}">
+				</div>
+				<div class="form-group">
+					<textarea class="form-control h-40" name="desc" required th:field="*{auctionDesc}"></textarea>
+				</div>
+				<div class="form-group">
+					<input type="number" class="form-control" name="price" autocomplete="off"  required th:field="*{auctionPrice}">
+				</div>
+				<div class="form-group">
+					<input type="number" class="form-control" autocomplete="off"  readonly required th:field="*{auctionHighest}">
+				</div>
+				<div class="form-group">
+					<select class="selectpicker" name="category" data-actions-box="true" required>
+						<option data-subtext="">DRESSES</option>
+						<option data-subtext="">SKIRTS</option>
+						<option data-subtext="">JUMPERS</option>
+						<option data-subtext="">BOOTS</option>
+						<option data-subtext="">HEELS</option>
+						<option data-subtext="unknown ITEM">OTHER</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="date" class="form-control"  placeholder="Wanted ends date for Auction?" name="done">
+				</div>
+				<button type="submit" class="btn btn-light">Update the auctionated item</button>
+				<a class="btn btn-light" th:href="@{/1}">Back to homepage</a>
+			</form>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
